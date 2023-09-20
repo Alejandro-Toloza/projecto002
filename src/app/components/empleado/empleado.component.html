@@ -1,0 +1,33 @@
+<div>
+    <h1>Lista de Empleados</h1>
+      <table class="table table-success table-striped" *ngIf="hayRegistros(); else sinempleados">
+        <tr>
+          <td>Id</td><td>Nombre</td><td>Apellido</td><td>Borrar</td><td>Seleccionar</td>
+        </tr>
+        <tr *ngFor="let emp of empleados">
+          <td>{{emp.id}}</td>
+          <td>{{emp.nombre}}</td>
+          <td>{{emp.apellido}}</td>
+          <td><button class="btn btn-primary" (click)="borrar(emp.id)">Borrar?</button></td>
+          <td><button class="btn btn-primary" (click)="seleccionar(emp)">Seleccionar</button></td>        
+        </tr>
+      </table>
+      <ng-template #sinempleados><p>No hay Empleados.</p></ng-template>
+     
+      <form class="row g-3 needs-validation" novalidate></form>
+      <div class="col-md-4">
+        
+        <label for="validationCustom01" class="form-label">First name</label>
+        <p>
+         Id:<input  class="form-control"  type="number" [(ngModel)]="emp.id" value="Mark" required />
+        </p>
+        <p>
+          Nombre:<input class="form-control" type="text" [(ngModel)]="emp.nombre" />
+        </p>
+        <p>
+          Edad:<input class="form-control" type="text" [(ngModel)]="emp.apellido" />
+        </p>            
+        <p><button class="btn btn-primary" (click)="agregar()">Agregar</button>
+        <button class="btn btn-primary" (click)="modificar()">Modificar</button></p>
+      </div>
+</div>

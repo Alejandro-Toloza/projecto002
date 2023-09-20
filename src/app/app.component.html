@@ -1,45 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=ç, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Document</title>
 </head>
 <body>
-
-  <div>
-    <h1>Administración de artículos</h1>
-      <table border="1" *ngIf="hayRegistros(); else sinarticulos">
-        <tr>
-          <td>Codigo</td><td>Descripcion</td><td>Precio</td><td>Borrar</td><td>Seleccionar</td>
-        </tr>
-        <tr *ngFor="let art of articulos">
-          <td>{{art.codigo}}</td>
-          <td>{{art.descripcion}}</td>
-          <td>{{art.precio}}</td>
-          <td><button (click)="borrar(art.codigo)">Borrar?</button></td>
-          <td><button (click)="seleccionar(art)">Seleccionar</button></td>        
-        </tr>
-      </table>
-      <ng-template #sinarticulos><p>No hay articulos.</p></ng-template>
-      <div>
-        <p>
-          Codigo:<input type="number" [(ngModel)]="art.codigo" />
-        </p>
-        <p>
-          descripcion:<input type="text" [(ngModel)]="art.descripcion" />
-        </p>
-        <p>
-          precio:<input type="number" [(ngModel)]="art.precio" />
-        </p>            
-        <p><button (click)="agregar()">Agregar</button>
-        <button (click)="modificar()">Modificar</button></p>
-      </div>
-  </div>
-
-
-
-
-  
+    
+    <app-empleado></app-empleado>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

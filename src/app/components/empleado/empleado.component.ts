@@ -11,14 +11,18 @@ export class EmpleadoComponent {
   emp={
     id:0 ,
     nombre:"",
-    apellido:""
+    apellido:"",
+    nroDocumento:0,
+    email:"",
+    fechaNacimiento: "",
+    fechaIngreso: ""
   }
 
-  empleados = [{id:1, nombre:'Ale', apellido:'asd'},
-               {id:2, nombre:'Tiago', apellido:'r'},
-               {id:3, nombre:'isasis', apellido:'asd'},
-               {id:4, nombre:'moises', apellido:'dd'},
-               {id:5, nombre:'carlos', apellido:'ff'},
+  empleados = [{id:1, nombre:'Ale', apellido:'asd', nroDocumento: 40234354, email:"alej7nm@gmail.com", fechaIngreso:'10/09/2023', fechaNacimiento:'3/10/2023'},
+               {id:2, nombre:'Tiago', apellido:'r', nroDocumento: 37234354, email:"adff7nm@gmail.com", fechaIngreso:'5/09/2023', fechaNacimiento:'3/10/2023'},
+               {id:3, nombre:'isasis', apellido:'asd', nroDocumento: 34234354, email:"gggg7nm@gmail.com", fechaIngreso:'1/07/2023', fechaNacimiento:'3/10/2023'},
+               {id:4, nombre:'moises', apellido:'dd', nroDocumento: 32234354, email:"jjhghgnm@gmail.com", fechaIngreso:'3/03/2023', fechaNacimiento:'3/10/2023'},
+               {id:5, nombre:'carlos', apellido:'ff', nroDocumento: 35234354, email:"aeeefdm@gmail.com", fechaIngreso:'10/08/2023', fechaNacimiento:'3/10/2023'},
               ];
 
   hayRegistros() {
@@ -38,25 +42,52 @@ export class EmpleadoComponent {
     if (this.emp.id==0) {
       alert('Debe ingresar un Id mayor a 0');
       return;
+    }else 
+    if (this.emp.nombre=='') {
+      alert('El campo nombre no debe estar vacio');
+      return;
+    }else 
+    if (this.emp.apellido=='') {
+      alert('El campo apellido no debe estar vacio');
+      return;
     }
+    if (this.emp.nroDocumento=0) {
+      alert('El campo Nº Documento no debe estar vacio');
+      return;
+    }
+
     for(let x=0;x<this.empleados.length;x++)
     if (this.empleados[x].id==this.emp.id)
     {
-      alert('ya existe un articulo con dicho codigo');
+      alert('ya existe un Empleado con ese Id');
       return;
     }        
     this.empleados.push({id:this.emp.id,
                          nombre:this.emp.nombre,
-                        apellido:this.emp.apellido });
+                         apellido:this.emp.apellido,
+                         nroDocumento:this.emp.nroDocumento,
+                         email:this.emp.email,
+                         fechaIngreso:this.emp.fechaIngreso,
+                         fechaNacimiento:this.emp.fechaIngreso
+                      });
     this.emp.id=0;
     this.emp.nombre="";	
-    this.emp.apellido="";    
+    this.emp.apellido="";
+    this.emp.email="";
+    this.emp.fechaIngreso='';
+    this.emp.fechaNacimiento=''
+    this.emp.nroDocumento=0    
   }
 
-  seleccionar(emp: { id: number; nombre: string; apellido: string; }) {
+  seleccionar(emp: { id: number; nombre: string; apellido: string; email:string; fechaIngreso:string; fechaNacimiento:string; nroDocumento:number }) {
     this.emp.id=emp.id;
     this.emp.nombre=emp.nombre;
     this.emp.apellido=emp.apellido;
+
+    this.emp.email=emp.email;
+    this.emp.fechaIngreso=emp.fechaIngreso;
+    this.emp.fechaNacimiento=emp.fechaNacimiento
+    this.emp.nroDocumento=emp.nroDocumento
   }
 
   modificar() {
@@ -67,6 +98,6 @@ export class EmpleadoComponent {
         this.empleados[x].apellido=this.emp.apellido;
         return;
       }        
-    alert('No existe el id de articulo ingresado');
+    alert('No existe el id del Empleado ingresado');
   }
 }

@@ -2,12 +2,16 @@
     <h1>Lista de Empleados</h1>
       <table class="table table-success table-striped" *ngIf="hayRegistros(); else sinempleados">
         <tr>
-          <td>Id</td><td>Nombre</td><td>Apellido</td><td>Borrar</td><td>Seleccionar</td>
+          <td>Id</td><td>Nombre</td><td>Apellido</td><td>Borrar</td><td>Seleccionar</td><td>nroDocumento</td><td>Email</td><td>Fecha Nacimiento</td><td>Fecha Ingreso</td>
         </tr>
         <tr *ngFor="let emp of empleados">
           <td>{{emp.id}}</td>
           <td>{{emp.nombre}}</td>
           <td>{{emp.apellido}}</td>
+          <td>{{emp.nroDocumento}}</td>
+          <td>{{emp.email}}</td>
+          <td>{{emp.fechaNacimiento}}</td>
+          <td>{{emp.fechaIngreso}}</td>
           <td><button class="btn btn-primary" (click)="borrar(emp.id)">Borrar?</button></td>
           <td><button class="btn btn-primary" (click)="seleccionar(emp)">Seleccionar</button></td>        
         </tr>
@@ -25,8 +29,20 @@
           Nombre:<input class="form-control" type="text" [(ngModel)]="emp.nombre" />
         </p>
         <p>
-          Edad:<input class="form-control" type="text" [(ngModel)]="emp.apellido" />
-        </p>            
+          Apelldio:<input class="form-control" type="text" [(ngModel)]="emp.apellido" />
+        </p>     
+        <p>
+          Nº Documento: <input class="form-control" type="number" [(ngModel)]="emp.nroDocumento" />
+        </p> 
+        <p>
+          Email:<input class="form-control" type="text" [(ngModel)]="emp.email" />
+        </p> 
+        <p>
+          Fecha Nacimiento:<input class="form-control" type="text" [(ngModel)]="emp.fechaNacimiento" />
+        </p> 
+        <p>
+          Fecha Ingreso:<input class="form-control" type="text" [(ngModel)]="emp.fechaIngreso" />
+        </p>        
         <p><button class="btn btn-primary" (click)="agregar()">Agregar</button>
         <button class="btn btn-primary" (click)="modificar()">Modificar</button></p>
       </div>
